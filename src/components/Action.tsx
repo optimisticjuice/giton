@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-
+import { useKey } from './KeyProvider';
 type Action = {
   type: 'increment' | 'decrement';
 };
@@ -16,14 +16,17 @@ const reducer = (state: State, action: Action): State => {
       throw new Error();
   }
 };
+
 const Counter = () => {
   const [state, dispatch] = useReducer(reducer, { count: 0 });
+  const { keyValue } = useKey();
 
   return (
     <div>
       <span>{state.count}</span>
       <button onClick={() => dispatch({ type: 'increment' })}>+</button>
       <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+      <span>Key: {keyValue || "None"}</span>
     </div>
   );
 };

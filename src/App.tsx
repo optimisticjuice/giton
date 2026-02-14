@@ -1,11 +1,12 @@
 
-import Action from "./components/Action";
+import Counter from "./components/Action";
+import KeyProvider from "./components/KeyProvider";
 
 const App = () => {
   return (
-    <div>
-      <Action />
-    </div>
+    <KeyProvider>
+      <Counter />
+    </KeyProvider>
   )
 }
 
